@@ -4,9 +4,18 @@
 
 int main(){
 
-    std::string filePath("owls.txt");
+    std::cout << "Enter path of file to use:" << std::endl;
+
+    std::string filePath;
+
+    std::getline(std::cin, filePath);
 
     std::ifstream testFile(filePath, std::ios::in);
+
+    if (!testFile.is_open()){
+        std::cout << "Unable to open specfied file." << std::endl;
+        return -1;
+    }
 
     MarkovChainText mChain(testFile);
 
